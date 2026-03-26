@@ -1,38 +1,46 @@
-# Task Management API
+# ✅ Task Management API
 
-A RESTful backend API for managing personal tasks — built with Spring Boot, secured with JWT, documented with Swagger, and deployable to Railway.
+> A production-ready RESTful backend for managing personal tasks — secured with JWT, documented with Swagger UI, and deployable to Railway in one click.
+
+![Java](https://img.shields.io/badge/Java-17-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0.4-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Auth-black?style=flat-square&logo=jsonwebtokens&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-UI-85EA2D?style=flat-square&logo=swagger&logoColor=black)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=flat-square&logo=apachemaven&logoColor=white)
+![Railway](https://img.shields.io/badge/Deploy-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white)
 
 ---
 
-## Tech Stack
+## 🧰 Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Language | Java 17 |
-| Framework | Spring Boot 4.0.4 |
-| Security | Spring Security + JWT (jjwt 0.11.5) |
-| Database | MySQL via Spring Data JPA / Hibernate |
-| Documentation | Swagger UI (springdoc-openapi 2.8.9) |
-| Observability | Spring Boot Actuator |
-| Utilities | Lombok, Spring Validation |
-| Build | Maven |
+| 🟠 Language | Java 17 |
+| 🍃 Framework | Spring Boot 4.0.4 |
+| 🔐 Security | Spring Security + JWT (`jjwt 0.11.5`) |
+| 🗄️ Database | MySQL via Spring Data JPA / Hibernate |
+| 📄 Documentation | Swagger UI (`springdoc-openapi 2.8.9`) |
+| 📊 Observability | Spring Boot Actuator |
+| 🔧 Utilities | Lombok, Spring Validation |
+| 🏗️ Build | Maven |
 
 ---
 
-## Features
+## ✨ Features
 
-- User registration and login with JWT authentication
-- Full CRUD for personal tasks (create, read, update, delete)
-- Filter tasks by status: `TODO`, `IN_PROGRESS`, `DONE`
-- Search tasks by title keyword (case-insensitive)
-- Paginated responses sorted newest first
-- Global exception handling — all errors return consistent JSON
-- Swagger UI for interactive API exploration
-- Health check via Spring Boot Actuator
+- 🔐 User registration and login with JWT authentication
+- ✅ Full CRUD for personal tasks (create, read, update, delete)
+- 🔍 Filter tasks by status: `TODO`, `IN_PROGRESS`, `DONE`
+- 🔎 Search tasks by title keyword (case-insensitive)
+- 📄 Paginated responses sorted newest first
+- 🚨 Global exception handling — all errors return consistent JSON
+- 📘 Swagger UI for interactive API exploration
+- 💓 Health check via Spring Boot Actuator
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/main/java/com/darshan/taskapi/
@@ -48,32 +56,30 @@ src/main/java/com/darshan/taskapi/
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Java 17+
-- Maven 3.8+
-- MySQL 8.0+ running locally
+- ☕ Java 17+
+- 📦 Maven 3.8+
+- 🗄️ MySQL 8.0+ running locally
 
-### 1. Clone the repository
+### 1️⃣ Clone the repository
 
 ```bash
 git clone https://github.com/your-username/taskapi.git
 cd taskapi
 ```
 
-### 2. Create the database
+### 2️⃣ Create the database
 
 ```sql
 CREATE DATABASE taskdb;
 ```
 
-> Tables are created automatically on first run via `ddl-auto=update`.
+> 💡 Tables are created automatically on first run via `ddl-auto=update`.
 
-### 3. Configure environment variables
-
-Export these before running, or set them in your IDE run configuration:
+### 3️⃣ Configure environment variables
 
 ```bash
 export DATABASE_URL=jdbc:mysql://localhost:3306/taskdb?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
@@ -83,19 +89,19 @@ export JWT_SECRET=your-256-bit-secret-key-here
 export JWT_EXPIRATION=86400000
 ```
 
-> If not set, the app falls back to the defaults in `application.properties`. **Never commit real secrets.**
+> ⚠️ If not set, the app falls back to defaults in `application.properties`. **Never commit real secrets.**
 
-### 4. Run the application
+### 4️⃣ Run the application
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-API starts at: `http://localhost:8080`
+🌐 API starts at: `http://localhost:8080`
 
 ---
 
-## API Base URL
+## 🌐 API Base URL
 
 ```
 http://localhost:8080/api
@@ -103,49 +109,51 @@ http://localhost:8080/api
 
 ---
 
-## Swagger UI
+## 📘 Swagger UI
 
 ```
 http://localhost:8080/swagger-ui.html
 ```
 
-To authenticate in Swagger:
+**To authenticate in Swagger:**
 1. Call `POST /api/auth/login` and copy the `token` from the response
-2. Click the **Authorize** button (top right)
+2. Click the **Authorize** button (top right) 🔓
 3. Paste the token → click **Authorize**
-4. All subsequent requests include the JWT automatically
+4. All subsequent requests include the JWT automatically ✅
 
 ---
 
-## API Endpoints
+## 📡 API Endpoints
 
-### Authentication
-
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/api/auth/register` | No | Create a new account |
-| POST | `/api/auth/login` | No | Login and receive a JWT token |
-
-### Tasks
+### 🔐 Authentication
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| GET | `/api/tasks` | Yes | Get all tasks (paginated, filterable) |
-| POST | `/api/tasks` | Yes | Create a new task |
-| GET | `/api/tasks/{id}` | Yes | Get a single task by ID |
-| PUT | `/api/tasks/{id}` | Yes | Update a task |
-| DELETE | `/api/tasks/{id}` | Yes | Delete a task (returns 204) |
+| `POST` | `/api/auth/register` | — | Create a new account |
+| `POST` | `/api/auth/login` | — | Login and receive a JWT token |
 
-### Monitoring
+### ✅ Tasks
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| GET | `/actuator/health` | No | Application health status |
-| GET | `/actuator/info` | No | Application info |
+| `GET` | `/api/tasks` | ✅ | Get all tasks (paginated, filterable) |
+| `POST` | `/api/tasks` | ✅ | Create a new task |
+| `GET` | `/api/tasks/{id}` | ✅ | Get a single task by ID |
+| `PUT` | `/api/tasks/{id}` | ✅ | Update a task |
+| `DELETE` | `/api/tasks/{id}` | ✅ | Delete a task (returns 204) |
+
+### 💓 Monitoring
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/actuator/health` | — | Application health status |
+| `GET` | `/actuator/info` | — | Application info |
 
 ---
 
-## Example: Register
+## 💡 Examples
+
+### 📝 Register
 
 **Request**
 ```http
@@ -174,7 +182,7 @@ Content-Type: application/json
 
 ---
 
-## Example: Create Task
+### ➕ Create Task
 
 **Request**
 ```http
@@ -207,11 +215,9 @@ Content-Type: application/json
 }
 ```
 
-> Note: `dueDate` is omitted from the response if not set (`@JsonInclude(NON_NULL)`).
-
 ---
 
-## Example: Get All Tasks (with filters)
+### 📋 Get All Tasks (with filters)
 
 ```http
 GET /api/tasks?status=IN_PROGRESS&search=API&page=0&size=10
@@ -224,7 +230,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
   "success": true,
   "message": "Tasks retrieved",
   "data": {
-    "content": [ { "id": 1, "title": "Finish API documentation", "..." : "..." } ],
+    "content": [ { "id": 1, "title": "Finish API documentation", "...": "..." } ],
     "page": 0,
     "size": 10,
     "totalElements": 1,
@@ -240,12 +246,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
 |---|---|---|---|
 | `status` | String | — | Filter by `TODO`, `IN_PROGRESS`, or `DONE` |
 | `search` | String | — | Search by title keyword (case-insensitive) |
-| `page` | int | 0 | Page number (0-based) |
-| `size` | int | 10 | Page size (max 50) |
+| `page` | int | `0` | Page number (0-based) |
+| `size` | int | `10` | Page size (max 50) |
 
 ---
 
-## Error Response Format
+## 🚨 Error Response Format
 
 All errors return the same shape:
 
@@ -259,15 +265,15 @@ All errors return the same shape:
 
 | Status | Scenario |
 |---|---|
-| 400 | Validation failed, invalid ID format |
-| 401 | Missing/invalid JWT, wrong credentials, not your task |
-| 404 | Task or user not found |
-| 409 | Email already registered |
-| 500 | Unexpected server error |
+| `400` | Validation failed, invalid ID format |
+| `401` | Missing/invalid JWT, wrong credentials, not your task |
+| `404` | Task or user not found |
+| `409` | Email already registered |
+| `500` | Unexpected server error |
 
 ---
 
-## Deployment (Railway)
+## 🚂 Deployment (Railway)
 
 1. Push the project to a GitHub repository
 2. Create a new project on [Railway](https://railway.app)
@@ -282,11 +288,13 @@ All errors return the same shape:
 | `JWT_SECRET` | Generate a strong random secret |
 | `JWT_EXPIRATION` | `86400000` (24 hours) |
 
-5. Railway auto-detects the Maven project and deploys on every push to main.
+5. ✅ Railway auto-detects the Maven project and deploys on every push to `main`.
 
 ---
 
-## Author
+## 👤 Author
 
 **Darshan Siddarth**
-darshansiddarth05@gmail.com
+📧 darshansiddarth05@gmail.com
+
+[![GitHub](https://img.shields.io/badge/GitHub-darshan3131-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/darshan3131)
